@@ -29,10 +29,6 @@ app.listen(process.env.APP_PORT, () => {
     console.log("\x1b[34m%s", "Route Count : ", allRoutes(app).length);
 
     console.log(
-        "-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|"
-    );
-
-    console.log(
         "Server -> Server started at : ",
         "\x1b[33m",
         new Date().toLocaleString()
