@@ -1,3 +1,4 @@
+import "reflect-metadata"; // Required for TypeScript decorators to work (used by sequelize-typescript)
 import express, { NextFunction, Request, Response } from "express";
 import dotnev from "dotenv";
 import cors from "cors";
@@ -5,11 +6,11 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 
 // Routes
-// import routes from "./Routes/index";
+import routes from "./Routes/index";
 
-// db
-// import { sequelize } from "./Database/db";
-// import { Customer } from "./Models/Customer";
+// DB
+import { sequelize } from "./Database/DB";
+import { Customer } from "./Models/Customer";
 
 const app = express();
 
@@ -42,7 +43,6 @@ try {
         return (diff[0] * NS_PER_SEC + diff[1]) / NS_TO_MS;
     };
 
-    /*     
     sequelize.addModels([Customer]);
 
     (async () => {
@@ -53,8 +53,7 @@ try {
         } catch (error) {
             console.log("\x1b[31m%s", "⚠⚠⚠ Database NOT synchronized ⚠⚠⚠ ");
         }
-    })(); 
-    */
+    })();
 
     app.use((req: Request, res: Response, next: NextFunction) => {
         if (process.env.NODE_ENV == "dev") {
@@ -82,9 +81,9 @@ try {
     });
 
     // Customer Routes
-    // app.use("/api/v1/customer", cors(corsOptions), routes.customer);
+    app.use("/api/v1/customer", cors(corsOptions), routes.customer);
 
-    app.get("*", function (req: Request, res: Response) {
+    app.use("*", function (req: Request, res: Response) {
         res.status(404)
             .json({
                 message: "This route is unavailable",

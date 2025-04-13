@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-// import allRoutes from "express-list-endpoints";
+import allRoutes from "express-list-endpoints";
 
 import app from "./src/app";
 
@@ -26,7 +26,7 @@ app.listen(process.env.APP_PORT, () => {
         "\x1b[0m"
     );
 
-    // console.log("\x1b[34m%s", "Route Count : ", allRoutes(app).length);
+    console.log("\x1b[34m%s", "Route Count : ", allRoutes(app).length);
 
     console.log(
         "-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|"
