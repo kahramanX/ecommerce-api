@@ -83,7 +83,7 @@ try {
     // Customer Routes
     app.use("/api/v1/customer", cors(corsOptions), routes.customer);
 
-    app.use("*", function (req: Request, res: Response) {
+    app.get("*", function (req: Request, res: Response) {
         res.status(404)
             .json({
                 message: "This route is unavailable",
